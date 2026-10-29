@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça a equipe do Complexo Jurídico Agenor Britto e suas áreas de atuação.">
+  <title>Agenor Britto </title>
+
+  <style>
+    :root {
+      --preto: #080808;
+      --preto-card: #181818;
+      --dourado: #D4AF37;
+      --dourado-claro: #F0D36C;
+      --branco: #FFFFFF;
+      --cinza: #BBBBBB;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--preto);
+      color: var(--branco);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; }
+
+    header {
+      background: rgba(5, 5, 5, 0.97);
+      border-bottom: 1px solid var(--dourado);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--dourado);
+      font-size: 19px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--branco);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover { color: var(--dourado); }
+
+    .hero {
+      min-height: 470px;
+      padding: 95px 22px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, #30270e, transparent 40%),
+        linear-gradient(120deg, #050505, #171717);
+      border-bottom: 1px solid #443715;
+    }
+
+    .container { max-width: 1100px; width: 100%; margin: auto; }
+
+    .subtitulo {
+      color: var(--dourado);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      color: var(--dourado);
+      font-size: clamp(36px, 6vw, 65px);
+      line-height: 1.15;
+      margin: 18px 0;
+    }
+
+    .hero p {
+      color: #DDDDDD;
+      font-size: 18px;
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+
+    .botao {
+      display: inline-block;
+      background: var(--dourado);
+      color: #080808;
+      padding: 12px 22px;
+      border: 1px solid var(--dourado);
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.25s;
+    }
+
+    .botao:hover { background: var(--dourado-claro); transform: translateY(-2px); }
+
+    .botao-secundario {
+      display: inline-block;
+      color: var(--dourado);
+      border: 1px solid var(--dourado);
+      padding: 11px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section { padding: 75px 22px; }
+
+    .titulo-secao {
+      color: var(--dourado);
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      margin: 10px 0 15px;
+    }
+
+    .descricao {
+      color: var(--cinza);
+      max-width: 800px;
+      margin-bottom: 35px;
+    }
+
+    .equipe {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .card {
+      min-width: 0;
+      height: 100%;
+      background: var(--preto-card);
+      border: 1px solid #493B18;
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      overflow-wrap: anywhere;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .card:hover { border-color: var(--dourado); transform: translateY(-3px); }
+
+    .avatar-circle {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 18px;
+      border: 2px solid var(--dourado);
+      border-radius: 50%;
+      overflow: hidden;
+      background: #222;
+      flex-shrink: 0;
+    }
+
+    .avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Espaço provisório para a foto de Dona Célia */
+    .avatar-iniciais {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dourado);
+      font-size: 42px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .card-placeholder {
+      border-style: dashed;
+    }
+
+    .role-badge {
+      display: block;
+      color: var(--dourado);
+      font-weight: bold;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .member-name {
+      color: var(--branco);
+      font-size: clamp(20px, 2.4vw, 25px);
+      line-height: 1.3;
+      margin: 0 0 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .member-bio {
+      color: var(--cinza);
+      font-size: 14px;
+      line-height: 1.75;
+      max-width: 100%;
+      margin: 0 auto;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .sobre {
+      background: #101010;
+      border-top: 1px solid #332A12;
+      border-bottom: 1px solid #332A12;
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.8fr);
+      gap: 35px;
+      align-items: start;
+    }
+
+    .sobre p { color: var(--cinza); margin: 15px 0; }
+
+    .destaque {
+      padding: 28px;
+      background: #1A1A1A;
+      border: 1px solid var(--dourado);
+      border-radius: 10px;
+    }
+
+    .destaque strong {
+      display: block;
+      color: var(--dourado);
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .destaque p { font-size: 14px; }
+
+    .servicos {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .servico {
+      min-width: 0;
+      background: var(--preto-card);
+      border: 1px solid #493B18;
+      border-radius: 10px;
+      padding: 25px;
+      overflow-wrap: anywhere;
+    }
+
+    .servico span { color: var(--dourado); font-size: 12px; font-weight: bold; }
+    .servico h3 { color: var(--dourado); margin: 12px 0; }
+    .servico p { color: var(--cinza); font-size: 14px; }
+
+    .aviso {
+      margin-top: 25px;
+      padding: 18px;
+      background: #171717;
+      border-left: 3px solid var(--dourado);
+      color: var(--cinza);
+      font-size: 13px;
+    }
+
+    .contato { background: #101010; }
+    .contato-box {
+      background: var(--preto-card);
+      border: 1px solid #493B18;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 800px;
+    }
+    .contato-box p { color: var(--cinza); margin: 10px 0 22px; }
+
+    .fontes { background: #101010; }
+    .fontes ul { padding-left: 22px; }
+    .fontes li { margin: 14px 0; color: var(--cinza); }
+    .fontes a { color: var(--dourado); overflow-wrap: anywhere; }
+
+    footer {
+      background: #030303;
+      border-top: 1px solid var(--dourado);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--cinza);
+      font-size: 13px;
+    }
+    footer strong { color: var(--dourado); font-size: 16px; }
+
+    .instagram-flutuante {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1200;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: var(--dourado);
+      color: #080808;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 20px rgba(0,0,0,.4);
+    }
+    .instagram-flutuante:hover { filter: brightness(1.06); transform: translateY(-2px); }
+
+    @media (max-width: 750px) {
+      html { scroll-padding-top: 150px; }
+      .nav { flex-direction: column; align-items: flex-start; }
+      nav { gap: 10px 14px; }
+      .hero { min-height: auto; padding: 75px 20px; }
+      section { padding: 55px 18px; }
+      .equipe, .sobre-grid, .servicos { grid-template-columns: minmax(0, 1fr); }
+      .card { padding: 24px 20px; }
+      .avatar-circle { width: 160px; height: 160px; }
+      .instagram-flutuante { right: 14px; bottom: 14px; padding: 12px 15px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">AGENOR BRITTO</div>
+      <nav aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#atuacao">Atuação</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="botao" data-whatsapp href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="subtitulo">Complexo Jurídico Agenor Britto</div>
+        <h1>Excelência, confiança e compromisso.</h1>
+        <p>Conheça nossa equipe e nossa apresentação institucional, com foco em profissionalismo, transparência e compromisso.</p>
+        <a class="botao" href="#equipe">Conheça nossa equipe</a>
+        <a class="botao-secundario" data-whatsapp href="#" target="_blank" rel="noopener noreferrer">Entre em contato</a>
+      </div>
+    </section>
+
+    <section id="equipe">
+      <div class="container">
+        <div class="subtitulo">Quem somos</div>
+        <h2 class="titulo-secao">Nossa equipe</h2>
+        <p class="descricao">
+          Acreditamos que a força de um trabalho jurídico está na união de conhecimentos,
+          na responsabilidade e na dedicação de cada profissional. Nosso núcleo jurídico
+          trabalha de forma colaborativa para analisar desafios e buscar soluções adequadas
+          para cada caso, sempre pautado pela ética, pelo respeito e pelo compromisso com os clientes.
+        </p>
+
+        <div class="equipe">
+          <article class="card">
+            <div class="avatar-circle">
+              <img src="AGENOR.jpeg" alt="Foto de Agenor Britto" loading="lazy">
+            </div>
+            <span class="role-badge">CEO</span>
+            <h3 class="member-name">Agenor Britto</h3>
+            <p class="member-bio">
+              Com mais de 20 anos de experiência no mercado imobiliário, Agenor Britto
+              construiu sua trajetória unindo o conhecimento da corretagem de imóveis
+              à atuação jurídica, com foco em ética, responsabilidade e compromisso com os clientes.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="avatar-circle">
+              <img src="JULIANA.jpeg" alt="Foto de Juliana Ramos Britto" loading="lazy">
+            </div>
+            <span class="role-badge">Estagiária</span>
+            <h3 class="member-name">Juliana Ramos Britto</h3>
+            <p class="member-bio">
+              Juliana integra a equipe do Complexo Jurídico Agenor Britto, contribuindo
+              para as atividades do escritório e desenvolvendo seus conhecimentos práticos
+              na área do Direito. Sua atuação é pautada pelo aprendizado, responsabilidade e dedicação.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="avatar-circle">
+              <img src="IMG_7100.PNG" alt="Foto de Gizelle Mello" loading="lazy">
+            </div>
+            <span class="role-badge">Advogada</span>
+            <h3 class="member-name">Gizelle Mello</h3>
+            <p class="member-bio">
+              Advogada com experiência em regularização imobiliária e análise registral,
+              com atuação em procedimentos de usucapião, inventários, registros e averbações.
+              Seu trabalho busca soluções jurídicas eficientes e maior segurança documental para os imóveis.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="avatar-circle">
+            <img src="karla nascimento.PNG" alt="KARLA Nascimento" loading="lazy">
+            </div>
+            <span class="role-badge">Auxiliar Jurídica</span>
+            <h3 class="member-name">Karla Nascimento</h3>
+            <p class="member-bio">
+              Profissional com mais de 6 anos de experiência em registros de imóveis e avaliação documental.
+              Atualmente, atua como assistente jurídica, com foco na análise de documentos para fins de registro
+              imobiliário, contribuindo para a organização documental e a segurança dos procedimentos registrais.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="avatar-circle">
+              <img src="DONA CELIA.jpeg" alt="Foto de Célia Cordeiro, Secretária Executiva" loading="lazy">
+            </div>
+            <span class="role-badge">Secretária Executiva</span>
+            <h3 class="member-name">Célia Cordeiro</h3>
+            <p class="member-bio">
+              Com 15 anos de experiência, Célia Cordeiro atua com dedicação, organização e profissionalismo,
+              contribuindo para a excelência dos serviços e o bom funcionamento da equipe do Complexo Jurídico
+              Agenor Britto. Sua trajetória é marcada pela responsabilidade, competência e compromisso com a
+              qualidade no atendimento.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+      <div class="container sobre-grid">
+        <div>
+          <div class="subtitulo">Perfil profissional</div>
+          <h2 class="titulo-secao">Sobre Agenor Britto</h2>
+          <p>
+            Advogado e corretor de imóveis, com atuação em regularização de imóveis rurais e urbanos,
+            além de questões relacionadas a inventários judiciais e extrajudiciais.
+          </p>
+          <p>
+            É fundador do Complexo Jurídico Agenor Britto, criado com o propósito de oferecer
+            atendimento atencioso e soluções jurídicas especializadas.
+          </p>
+        </div>
+        <aside class="destaque">
+          <strong>Atuação imobiliária</strong>
+        </aside>
+      </div>
+    </section>
+
+    <section id="atuacao">
+      <div class="container">
+        <div class="subtitulo">Conheça o nosso trabalho</div>
+        <h2 class="titulo-secao">Áreas de atuação</h2>
+        <p class="descricao">
+          Conheça as áreas em que atuamos e como nossa equipe pode orientar você na busca por soluções seguras e eficazes.
+        </p>
+
+        <div class="servicos">
+          <article class="servico">
+            <span>01 / IMÓVEIS</span>
+            <h3>Regularização imobiliária</h3>
+            <p>Questões documentais e procedimentos para regularizar a situação de um imóvel.</p>
+          </article>
+          <article class="servico">
+            <span>02 / DOCUMENTAÇÃO</span>
+            <h3>Adjudicação compulsória</h3>
+            <p>Procedimento que pode viabilizar a formalização da transferência de um imóvel nas situações previstas em lei.</p>
+          </article>
+          <article class="servico">
+            <span>03 / PATRIMÔNIO</span>
+            <h3>Inventários e heranças</h3>
+            <p>Questões relacionadas à regularização e à partilha de bens deixados por uma pessoa falecida.</p>
+          </article>
+        </div>
+
+        <div class="aviso">
+          <strong>Importante:</strong> confirme as credenciais profissionais, os cargos, os serviços e os dados institucionais antes de publicar.
+          As informações desta página não substituem orientação jurídica individual.
+        </div>
+      </div>
+    </section>
+
+    <section class="contato" id="contato">
+      <div class="container">
+        <div class="subtitulo">Fale conosco</div>
+        <h2 class="titulo-secao">Entre em contato</h2>
+        <div class="contato-box">
+          <h3>Complexo Jurídico Agenor Britto</h3>
+          <p>
+            Olá! Seja bem-vindo(a) ao Complexo Jurídico Agenor Britto.
+            Clique no botão abaixo para iniciar uma conversa pelo WhatsApp e explicar sua dúvida.
+          </p>
+          <a class="botao" data-whatsapp href="#" target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fontes" id="fontes">
+      <div class="container">
+        <div class="subtitulo">Transparência</div>
+        <h2 class="titulo-secao">Fontes consultadas</h2>
+        <p class="descricao">Consulte as publicações públicas utilizadas como referência para esta apresentação.</p>
+        <ul>
+          <li>
+            <a href="https://paranegocios.com.br/agenor-britto-regularizacao-de-imoveis-em-belem/" target="_blank" rel="noopener noreferrer">
+              Portal Pará Negócios — Agenor Britto e regularização de imóveis
+            </a>
+          </li>
+          <li>
+            <a href="https://www.oliberal.com/belem/conheca-as-regras-e-direitos-de-tutores-e-animais-em-condominios-1.1006581" target="_blank" rel="noopener noreferrer">
+              O Liberal — regras e direitos em condomínios
+            </a>
+          </li>
+        </ul>
+        <p style="color: #BBBBBB; margin-top: 25px; font-size: 13px;">
+          As fontes não representam necessariamente uma biografia completa nem confirmam todos os dados apresentados.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>COMPLEXO JURÍDICO AGENOR BRITTO</strong></p>
+    <p>Apresentação institucional — identidade visual preto e dourado.</p>
+    <p>© <span id="ano"></span> — Todos os direitos reservados.</p>
+  </footer>
+
+  <a class="instagram-flutuante" href="https://www.instagram.com/ageno.britto?rpxt=MXdqMmp6MDhneWw4OQ==" target="_blank" rel="noopener noreferrer" aria-label="Acessar o Instagram @ageno.britto">
+    Instagram · @ageno.britto
+  </a>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+
+    const numeroWhatsApp = "559181114679";
+    const mensagemWhatsApp =
+      "Olá, Complexo Jurídico Agenor Britto! Vim pelo site e gostaria de tirar uma dúvida e receber orientação sobre uma questão jurídica. Poderiam me informar como funciona o atendimento?";
+
+    const linkWhatsApp =
+      "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensagemWhatsApp);
+
+    document.querySelectorAll("[data-whatsapp]").forEach(function (botao) {
+      botao.href = linkWhatsApp;
+    });
+  </script>
+</body>
+</html>
